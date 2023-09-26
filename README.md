@@ -1,66 +1,191 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SPOOL DATA FROM HACKER NEWS API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Table of Contents
 
-## About Laravel
+- [Installation-Setup](#installation-setup)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [API Endpoints](#api-endpoints)
+- [Project Strategies](#project-strategies)
+- [Postman-Collection](#postman-collection)
+- [Hacker News API URLs](#hacker-news-api-urls)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation Setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before getting started, make sure you have the following prerequisites installed on your development environment
 
-## Learning Laravel
+1. **PHP**: Laravel requires PHP 7.4 or higher. If you already have it installed you can check you current version by running `php -v` or `php -version` on your terminal.
+2. **Composer**: Composer is a PHP package manager used for Laravel's dependency management. You can download composer from [Compoers](getcomposer.org)
+3. **Web Server**: You can use any server of your choice for local development, such as Apache [Apache](https://www.apachefriends.org/) or Laravel built-in development server
+4. **Database**: Laravel supports multiple database systems, including MySQL, SQLite, PostgreSQL and SQL Server. Ensure you have one of these databases installed and configured.
+5. **Git**: Git is a version control system. It will be used for managing the project's source code.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### 1. Clone the Repository
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Clone the Laravery project repository for this project by copying the link below:
 
-## Laravel Sponsors
+    `https://github.com/Menor25/hacker_news_api.git`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Go to you terminal, navigate to the server directory (such as apache).
+- Change directory to the htdocs directory
+- Clone the repository link you copied above using the command below:
 
-### Premium Partners
+        `git clone https://github.com/Menor25/hacker_news_api.git`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### 2. Navigate to your cloned Project Directory
 
-## Contributing
+Change your current working directory to the cloned working directory using the command below:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    `cd hacker_news_api`
 
-## Code of Conduct
+#### 3. Install Project Dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Open your terminal or command line and navigate to the cloned project directory
+- Run the following command to install all the dependencies using composer:
 
-## Security Vulnerabilities
+        `composer install`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 4. Copy the Environment File
 
-## License
+- Make a copy of the provided `.env.example` file and name it `.env` using the command below:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        `cp .env.example .env`
+
+#### 5. Configure the environment variables
+
+- Go to the root directory of your laravel cloned project, you will find a file name `.env`
+- Open the `.env` file in a text editor and configure your databse connnection details as follows:
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+NB: The datase should be created already in your local database
+
+- Configure the one for the queue aslo
+    QUEUE_CONNECTION=database
+    QUEUE_DRIVER=database
+
+#### 6: Generate an application key
+
+- Open your terminal and navigation to the project root directory
+- Run the following command to generate the application key:
+
+        `php artisan key:generate`
+
+#### 7: Migrate Database
+
+- Open your terminal and navigate to the root directory
+
+- Run the following command to create all database tables:
+
+        `php artisan migrate`
+
+#### 8: Start Development Server
+
+- Open your terminal and navigate to the project root directory
+
+- Run the following command to start the server:
+
+        `php artisan serve`
+
+This will start a development server at `http://127.0.0.1:8000`
+
+- Open a browser and access the url provided [localhost](http://127.0.0.1:8000/api)
+
+Your laravel api is now fully setup, running on your local machine.
+
+## API Endpoints
+
+### New Stories Endpoints
+
+#### Spooling stories
+
+    `http://127.0.0.1:8000/api/spool-stories`
+
+#### Getting all stories from the database
+
+    `http://127.0.0.1:8000/api/stories`
+
+#### Getting a single story from the database
+
+    `http://127.0.0.1:8000/api/story/${id}`
+
+### Ask Stories Endpoints
+
+#### Spooling ask stories
+
+    `http://127.0.0.1:8000/api/spool-asks-stories`
+
+#### Getting all ask stories from the database
+
+    `http://127.0.0.1:8000/api/asks`
+
+#### Getting a single ask story from the database
+
+    `http://127.0.0.1:8000/api/asks/${id}`
+
+### Job Stories Endpoints
+
+#### Spooling jobs stories
+
+    `http://127.0.0.1:8000/api/spool-jobs-stories`
+
+#### Getting all jobs stories from the database
+
+    `http://127.0.0.1:8000/api/jobs`
+
+#### Getting a single jobs story from the database
+
+    `http://127.0.0.1:8000/api/jobs/${id}`
+
+## Project Strategies
+
+    - Setup a Laravel project
+    - Configure the database
+    - Create models and migrations
+    - Create Jobs
+    - Implement Services
+    - Implement Laravel Queue system
+    - Use Dependency Injection and Containers
+    - Spool data from Hacker News API
+    - Validate data before storing them in the database
+    - Schedule data spooling
+    - Testing endpoints
+
+## Postman-Collection
+
+    `https://www.postman.com/grey-star-158150/workspace/hacker-news-api/collection/21425984-9f6e5f64-34c4-4b6e-bd20-333264976ed9?action=share&creator=21425984`
+
+## Hacker News API URLs
+
+### New Stories IDs
+
+    `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty`
+
+### New Stories
+
+    `https://hacker-news.firebaseio.com/v0/item/{$story_id}.json?print=pretty`
+
+### Ask StoriesIDs
+
+    `https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty`
+
+### Ask Stories
+
+    `https://hacker-news.firebaseio.com/v0/item/{$ask_story_id}.json?print=pretty`
+
+### Job Stories IDs
+
+    `https://hacker-news.firebaseio.com/v0/jobstories.json?print=pretty`
+
+### Job Stories
+
+    `https://hacker-news.firebaseio.com/v0/item/{$job_story_id}.json?print=pretty`
+
+With this guide, you have successfully installed Laravel api service for spooling data from hacker news api and store in the database; initialized your project, install the necessary dependencies and connections. The postman collection to easily test the APIs is also included, API endpoints and Hacker news API URLs.
