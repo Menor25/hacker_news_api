@@ -28,7 +28,7 @@ Before getting started, make sure you have the following prerequisites installed
 
 - Clone the Laravery project repository for this project by copying the link below:
 
-    `https://github.com/Menor25/hacker_news_api.git`
+        `https://github.com/Menor25/hacker_news_api.git`
 
 - Go to you terminal, navigate to the server directory (such as apache).
 - Change directory to the htdocs directory
